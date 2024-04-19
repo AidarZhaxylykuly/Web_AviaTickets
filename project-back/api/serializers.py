@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from api.models import AviaTour, Hotel, Reservation
+from api.models import AviaTour, Hotel, Reservation, UnitUser
 
 
 class AviaSerializer(serializers.Serializer):
@@ -47,6 +47,7 @@ class AviaSerializer(serializers.Serializer):
         instance.save()
         return instance
 
+
 class HotelSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=75)
     city = serializers.CharField(max_length=75)
@@ -71,8 +72,15 @@ class HotelSerializer(serializers.Serializer):
         return instance
 
 
+class UnitUserSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = UnitUser
+        fields = ("user_id", "name", "surname", "email", "contacts")
+
+
 class ReservationSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(read_only=True)
     class Meta:
         model = Reservation
-        fields = ("id", "name", "surname", "email", "contacts",
-                  "num_of_people", "acceptance", "hotel", "aviatour", "total_cost")
+        fields = ("unit_user", "num_of_people", "acceptance", "hotel", "aviatour", "total_cost", "user_id")

@@ -1,6 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
 
 class AviaTour(models.Model):
     name = models.CharField(max_length=100)
@@ -37,11 +37,40 @@ class Hotel(models.Model):
     return f'Id: {self.id}, Name: {self.name}, City: {self.cost_per_person}, Stars: {self.stars}'
 
 
+class UnitUser(models.Model):
+  user = models.ForeignKey(
+    User,
+    on_delete=models.CASCADE,
+    related_name="unit_user",
+    null=True,
+    blank=True
+  )
+  name = models.CharField(max_length=100)
+  surname = models.CharField(max_length=100)
+  email = models.CharField(max_length=100)
+  contacts = models.CharField(max_length=12)
+
+  class Meta:
+    verbose_name = "Unit_User"
+    verbose_name_plural = "Unit_Users"
+
+  def __str__(self):
+    return f'Id: {self.id}, Name: {self.name}, Surname: {self.surname}, Email: {self.email}, Contants:{self.contacts}'
+
+
 class Reservation(models.Model):
-    name = models.CharField(max_length=100)
-    surname = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
-    contacts = models.CharField(max_length=12)
+    user = models.ForeignKey(
+      User,
+      on_delete=models.CASCADE,
+      related_name="reservations",
+      null=True,
+      blank=True
+    )
+    unit_user = models.ForeignKey(
+      UnitUser,
+      on_delete=models.CASCADE,
+      related_name="reservations"
+    )
     num_of_people = models.IntegerField()
     acceptance = models.BooleanField(default=False)
     hotel = models.ForeignKey(
@@ -61,4 +90,4 @@ class Reservation(models.Model):
         verbose_name_plural = 'Reservations'
 
     def __str__(self):
-        return f'Id: {self.id}, Name: {self.name}, Surname: {self.surname}, Email: {self.email}, Contants:{self.contacts}, PeopleNumber: {self.num_of_people}, Acceptance: {self.acceptance},Hotel: {self.hotel}, Aviatour: {self.aviatour.id}, TotalCost: {self.total_cost}'
+        return f'User: {self.unit_user}, PeopleNumber: {self.num_of_people}, Acceptance: {self.acceptance},Hotel: {self.hotel}, Aviatour: {self.aviatour.id}, TotalCost: {self.total_cost}'

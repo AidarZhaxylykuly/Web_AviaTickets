@@ -1,13 +1,26 @@
-from django.urls import path, re_path
+from django.urls import path
 
-from api.views import (get_aviatours, get_aviatour, get_reservations,
-                       get_reservation, get_top_aviatours, HotelListMixin)
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from api.views import (get_aviatours, get_aviatour, get_hotels, get_hotel,
+                       get_top_aviatours, ReservationsGeneric, ReservationDetailGeneric,
+                       UserCreationGeneric, UnitUserGeneric)
 
 urlpatterns = [
+    #authentication urls
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
+    #tours' urls
     path('aviatours/', get_aviatours),
     path('aviatours/<int:pkey>/', get_aviatour),
-    path('reservations/', get_reservations),
-    path('reservations/<int:pkey>/',get_reservation),
     path('aviatours/top_ten/', get_top_aviatours),
-    path('hotels/', HotelListMixin.as_view())
+    #reservations' urls
+    path('reservations/', ReservationsGeneric.as_view()),
+    path('reservations/<int:pkey>/', ReservationDetailGeneric.as_view()),
+    #hotels' urls
+    path('hotels/', get_hotels),
+    path('hotels/<int:pkey>/', get_hotel),
+    #users' urls
+    path('users/<int:pkey>/', UnitUserGeneric.as_view()),
+    path('users/', UserCreationGeneric.as_view()),
 ]
