@@ -1,0 +1,56 @@
+<div class="signupcomp">
+    <div class="left-div">
+        <img class="background-image" src="assets\bigsky4.jpg" alt="phoneimg">
+      </div>       
+
+<section class="main">
+
+    <div class="right-div">
+      <div class="panel signup">
+        <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Aviasales_logo.png/1200px-Aviasales_logo.png" alt="logo">
+        <h3>Let's create an account</h3>
+        <form>
+            <input
+            class="input-box"
+            type="text"
+            name="username"
+            required
+            placeholder="Username"
+            >
+
+            <input
+            class="input-box"
+            type="email"
+            name="email"
+            required
+            placeholder="Email"
+            >
+
+            <input
+            class="input-box"
+            type="password"
+            name="password"
+            required
+            placeholder="Password"
+            >
+
+            <input
+            class="button"
+            type="submit"
+            name="signup"
+            value="Sign up"
+            >
+
+        </form>
+      </div>
+      <div class="panel signin">
+        <p>Already have an account?</p>
+        <a [routerLink]="['/signin']">Sign in.</a>
+      </div>
+    </div>
+</section>
+</div>
+<app-footer></app-footer>
+
+
+

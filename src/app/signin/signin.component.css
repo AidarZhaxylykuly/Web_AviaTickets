@@ -1,0 +1,258 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: Poppins, Inter, Avenir, Helvetica, Arial, sans-serif; */
+    overflow-x:hidden;
+}
+
+.signcomp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+.plane2 {
+    z-index: 2;
+    width: 1280px;
+    height: fit-content;
+    position: absolute;
+    top: 130px;
+    left:0;
+
+}
+
+
+
+body {
+    background-color: #fafafa;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    position: absolute;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+}
+
+.right-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 650px;
+    height: auto;
+    /* position: absolute; */
+    z-index: 10;
+    box-shadow: 30px 40px 44px 40px #0000001a;
+
+}
+
+/* 
+.left-div{
+    position: absolute;
+
+} */
+
+.background-image{
+    position: absolute; /* Position the image absolutely */
+    top: 0;
+    left: 0;
+    z-index: 0; /* Set a lower z-index to place it beneath other elements */
+    width: 100%;
+    height:740px;
+    object-fit: cover;
+}
+
+
+.panel{
+    width: 350px;
+    background-color: #f3faff;
+    border: 1px solid #dedede;
+    border-radius: 15px;
+    padding: 20px 40px;
+    margin: 5px 0;
+    display: flex;
+}
+
+.login {
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo {
+    width: 65%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-box{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f3faff;;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+}
+
+.input-box::placeholder {
+    color: #8a8a8a;
+    font-size: 12px;
+  }
+  
+.input-box:focus {
+    outline: none;
+    border: 1px solid rgb(62, 92, 184);
+}
+
+.button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 7px 0;
+    background-color:rgb(62, 92, 184);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px; 
+  }
+
+.divider {
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    color: #8a8a8a;
+    font-weight: bold;
+    gap: 20px;
+    align-items: center;
+}
+
+
+.line {
+    flex: 1;
+    height: 0.8px;
+    background-color: #8a8a8a74;
+}
+
+
+.forgot {
+    /* color: rgb(59, 52, 54); */
+    color: rgb(91, 90, 90);
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    margin-left: 200px;
+    white-space: nowrap; 
+    /* font-weight:bolder; */
+}
+
+.signup {
+    
+    justify-content: center;
+    gap: 5px;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.signup a {
+    color:rgb(68, 114, 255);
+    text-decoration: none;
+    font-weight: 540;
+    font-weight: bolder;
+    
+}
+
+.signup p {
+    color: rgb(59, 52, 54);
+}
+
+.apps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+
+
+.panel.signup p{
+    white-space: nowrap;
+    color: rgb(61, 59, 59);
+    
+}
+
+.panel.signup{
+    font-weight: bolder;
+}
+
+  
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 12px;
+    list-style: none;
+    gap: 15px;
+    margin: 20px 0;
+}
+  
+li, a {
+    color: #8a8a8a;
+    text-decoration: none;
+}
+  
+@media (max-width: 860px) {
+    .left {
+      display: none;
+    }
+}
+
+select {
+    border: none;
+    margin-top: -10px;
+    color:#8a8a8a;
+    background-color:#fafafa;
+    font-size: 1em;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 18px;
+}
+
+a:hover{
+    color: rgb(62, 92, 184);
+}
+
+
+app-footer {
+    position: absolute;
+    margin-top: 730px;
+    width: 100%;
+    overflow: hidden ;
+}
