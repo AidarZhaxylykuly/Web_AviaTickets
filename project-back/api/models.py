@@ -38,7 +38,7 @@ class Hotel(models.Model):
 
 
 class UnitUser(models.Model):
-  user = models.ForeignKey(
+  user = models.OneToOneField(
     User,
     on_delete=models.CASCADE,
     related_name="unit_user",
