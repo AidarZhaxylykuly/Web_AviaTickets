@@ -1,0 +1,9 @@
+<ul *ngIf="loaded; else loading">
+  <li *ngFor="let t of tours">
+    {{t.name}}  {{t.cost}} {{t.date_of_departure}}
+  </li>
+</ul>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

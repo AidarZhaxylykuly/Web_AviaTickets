@@ -49,6 +49,7 @@ class AviaSerializer(serializers.Serializer):
 
 
 class HotelSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
     name = serializers.CharField(max_length=75)
     city = serializers.CharField(max_length=75)
     cost_per_person = serializers.IntegerField()

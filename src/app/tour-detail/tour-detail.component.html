@@ -1,0 +1,33 @@
+<h1>{{tour.name}}</h1>
+<h3>About tour: {{tour.description}}</h3>
+<h3>Выезд из аэропорта: {{tour.arrival_airport}}</h3>
+<br>
+<h2>Города:</h2>
+<h3>{{tour.city1}}</h3>
+<h3>{{tour.city2}}</h3>
+<br>
+<h3>Стоимость за 1 человека: {{tour.cost}}$</h3>
+<h3>Дата вылета: {{tour.date_of_arrival}}</h3>
+<h3>Дата возвращения: {{tour.date_of_departure}}</h3>
+<h3>Длительность тура: {{tour.duration_of_visit}} дней</h3>
+
+
+<ng-container *ngIf="logged">
+  <fieldset>
+    <select [(ngModel)]="reservation.num_of_people">
+      <option [value]="1">1</option>
+      <option [value]="2">2</option>
+      <option [value]="3">3</option>
+      <option [value]="4">4</option>
+    </select>
+    <br>
+    <select [(ngModel)]="reservation.hotel">
+      <option *ngFor="let hotel of hotels" [value]="+hotel.id">{{ hotel.name }} | {{hotel.stars}} stars |{{hotel.cost_per_person/500}}$ per person</option>
+    </select>
+    <br>
+    <p><input type="checkbox" [(ngModel)]="reservation.acceptance" (ngModelChange)="updateTotalCost()"> Accept policy</p>
+    Total cost: {{reservation.total_cost}} $
+    <br>
+    <button (click)="addReservation()">Reserve</button>
+  </fieldset>
+</ng-container>

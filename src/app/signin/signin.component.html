@@ -1,10 +1,10 @@
- 
+
 <div class="signcomp">
     <!-- <h1 class="slogan">Time <br>To Travel</h1> -->
     <img class="plane2" src="assets\plane2.png">
     <div class="left-div">
         <img class="background-image" src="assets\bigsky2.jpg" alt="bigsky">
-      </div>       
+      </div>
 
 <section class="main">
 
@@ -17,8 +17,8 @@
             type="text"
             name="username"
             required
-            placeholder="Phone number, username or email"
-            >
+            placeholder="Username"
+            [(ngModel)]="username">
 
             <input
             class="input-box"
@@ -26,9 +26,9 @@
             name="password"
             required
             placeholder="Password"
-            >
+            [(ngModel)]="password">
 
-            
+
 
 
             <input
@@ -36,6 +36,7 @@
             type="submit"
             name="login"
             value="Log in"
+            (click)="login()"
             >
 
             <a class="forgot" href=#>Forgot password?</a>

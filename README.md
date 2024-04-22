@@ -10,6 +10,8 @@
 
 *Zhanell Aldan
 
+*Tokanova Ayazhan
+
 ------------------------------
 
 Description:
