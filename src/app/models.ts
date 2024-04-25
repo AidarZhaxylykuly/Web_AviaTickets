@@ -22,6 +22,7 @@ export interface Reservation {
   hotel: number;
   aviatour: number;
   total_cost: number;
+  aviaTourDetails?: AviaTour;
 }
 
 export interface Hotel {
@@ -32,6 +33,24 @@ export interface Hotel {
   stars: number;
 }
 
+export interface UnitUser{
+  id?: number;
+  user_id: number;
+  name: string;
+  surname: string;
+  email: string;
+  contacts: string;
+}
+
+export interface User{
+  username: string;
+  password: string;
+  email: string;
+}
+
+export interface UserList {
+  users: { id: number; username: string; }[];
+}
 export interface Token{
   access: string;
   refresh: string;

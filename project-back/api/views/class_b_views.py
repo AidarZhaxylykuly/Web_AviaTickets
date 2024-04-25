@@ -31,9 +31,6 @@ class UserCreationGeneric(generics.CreateAPIView):
     queryset = UnitUser.objects.all()
     serializer_class = ReservationSerializer
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
 
 class UnitUserGeneric(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UnitUserSerializer

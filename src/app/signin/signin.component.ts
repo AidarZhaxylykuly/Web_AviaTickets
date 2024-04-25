@@ -3,6 +3,7 @@ import { FooterComponent } from '../footer/footer.component';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {TourService} from "../tour.service";
 import {FormsModule} from "@angular/forms";
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class SigninComponent implements OnInit{
   password: string = '';
   logged: boolean = false;
 
-  constructor(private tourService: TourService, private route: ActivatedRoute, private router: Router){
+  constructor(private tourService: TourService, private location: Location, private route: ActivatedRoute){
 
   }
 
@@ -35,13 +36,7 @@ export class SigninComponent implements OnInit{
       this.logged = true;
       localStorage.setItem("access", data.access);
       localStorage.setItem("refresh", data.refresh);
-      this.router.navigate(['']);
+      this.location.back();
     })
-  }
-
-  logout() {
-    this.logged = false;
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
   }
 }

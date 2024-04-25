@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {AviaTour, Hotel, Reservation} from "../models";
+import {AviaTour, Hotel, Reservation, UnitUser} from "../models";
 import { ViewChild } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {TourService} from "../tour.service";
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {HeaderComponent} from "../header/header.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-tour-detail',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink, NgForOf, NgIf],
+  imports: [FormsModule, CommonModule, RouterLink, NgForOf, NgIf, HeaderComponent, FooterComponent],
   templateUrl: './tour-detail.component.html',
   styleUrl: './tour-detail.component.css'
 })
 export class TourDetailComponent implements OnInit{
-  logged: boolean = true;
+  logged: boolean = false;
   tour!: AviaTour;
   hotels!: Hotel[];
   reservation: Reservation = {
@@ -36,6 +38,11 @@ export class TourDetailComponent implements OnInit{
     this.getTour();
     this.getHotels();
     this.updateTotalCost()
+
+    const access = localStorage.getItem("access");
+    if (access) {
+      this.logged = true;
+    }
   }
 
   getTour(){

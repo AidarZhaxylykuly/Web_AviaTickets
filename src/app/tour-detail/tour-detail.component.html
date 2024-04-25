@@ -1,4 +1,6 @@
+<app-header></app-header>
 <h1>{{tour.name}}</h1>
+<img src="{{tour.pic_url}}" alt="Фото из тура">
 <h3>About tour: {{tour.description}}</h3>
 <h3>Выезд из аэропорта: {{tour.arrival_airport}}</h3>
 <br>
@@ -12,7 +14,10 @@
 <h3>Длительность тура: {{tour.duration_of_visit}} дней</h3>
 
 
-<ng-container *ngIf="logged">
+<ng-container *ngIf="logged; else case2">
+  <p>Для бронирования тура необходимо <a routerLink="/signin">войти в систему</a></p>
+</ng-container>
+<ng-template #case2>
   <fieldset>
     <select [(ngModel)]="reservation.num_of_people">
       <option [value]="1">1</option>
@@ -30,4 +35,4 @@
     <br>
     <button (click)="addReservation()">Reserve</button>
   </fieldset>
-</ng-container>
+</ng-template>

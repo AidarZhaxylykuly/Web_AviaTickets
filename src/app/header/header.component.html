@@ -3,17 +3,23 @@
   <!-- <a class = "out" id="icon"> AviaSales</a> -->
   <a class="out" id="icon" href=""> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Aviasales_logo.png/1200px-Aviasales_logo.png"></a>
   <div class="header_middle_links">
-  <a href="">Home</a>
-  <div class="space"></div>
-  <a href="">About</a>
-  <div class="space"></div>
-  <a href="">Offers</a>
-  <div class="space"></div>
-  <a href="">Seats</a>
-  <div class="space"></div>
-  <a href="">Destinations</a>
+    <a href="">Home</a>
+    <div class="space"></div>
+    <a href="">About</a>
+    <div class="space"></div>
+    <a routerLink="/tours" href="">Tours</a>
+    <div class="space"></div>
+    <a routerLink="/bookings" href="">Bookings</a>
+    <div class="space"></div>
+    <a href="">Destinations</a>
   </div>
-  <a class="out" routerLink="/signin" id="signin" href=""> Sign in </a>  
-  <a class="out" routerLink="/signup" id="signup" href=""> Sign up </a>  
+  <ng-container *ngIf="logged; else case2">
+    <a class="out" id="profile" routerLink="/signin"> Profile </a>
+    <a class="out" id="logout" (click)="logout()"> Log out </a>
+  </ng-container>
+  <ng-template #case2>
+    <a class="out" routerLink="/signin" id="signin" href=""> Sign in </a>
+    <a class="out" routerLink="/signup" id="signup" href=""> Sign up </a>
+  </ng-template>
   <a class= "out" id="contact" href="">Contact</a>
 </div>

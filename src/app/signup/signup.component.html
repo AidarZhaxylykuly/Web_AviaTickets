@@ -1,7 +1,7 @@
 <div class="signupcomp">
     <div class="left-div">
         <img class="background-image" src="assets\bigsky4.jpg" alt="phoneimg">
-      </div>       
+      </div>
 
 <section class="main">
 
@@ -10,13 +10,24 @@
         <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Aviasales_logo.png/1200px-Aviasales_logo.png" alt="logo">
         <h3>Let's create an account</h3>
         <form>
-            <input
+
+          <input
             class="input-box"
             type="text"
-            name="username"
+            name="Name"
             required
-            placeholder="Username"
-            >
+            placeholder="Name"
+            [(ngModel)]="unit_user.name"
+          >
+
+          <input
+            class="input-box"
+            type="text"
+            name="Surname"
+            required
+            placeholder="Surname"
+            [(ngModel)]="unit_user.surname"
+          >
 
             <input
             class="input-box"
@@ -24,7 +35,28 @@
             name="email"
             required
             placeholder="Email"
+            [(ngModel)]="unit_user.email"
             >
+
+          <input
+            class="input-box"
+            type="tel"
+            name="phone"
+            required
+            placeholder="Phone Number"
+            [(ngModel)]="unit_user.contacts"
+          >
+
+          <br>
+
+          <input
+            class="input-box"
+            type="text"
+            name="username"
+            required
+            placeholder="Username"
+            [(ngModel)]="user.username"
+          >
 
             <input
             class="input-box"
@@ -32,6 +64,7 @@
             name="password"
             required
             placeholder="Password"
+            [(ngModel)]="user.password"
             >
 
             <input
@@ -39,6 +72,7 @@
             type="submit"
             name="signup"
             value="Sign up"
+            (click)="createUser()"
             >
 
         </form>

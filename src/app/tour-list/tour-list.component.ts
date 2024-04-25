@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {AviaTour} from "../models";
 import { ViewChild } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {TourService} from "../tour.service";
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
+import {HeaderComponent} from "../header/header.component";
 
 
 @Component({
@@ -13,7 +14,8 @@ import {CommonModule, NgForOf, NgIf} from "@angular/common";
     RouterLink,
     NgForOf,
     NgIf,
-    CommonModule
+    CommonModule,
+    HeaderComponent
   ],
   templateUrl: './tour-list.component.html',
   styleUrl: './tour-list.component.css'
@@ -25,7 +27,7 @@ export class TourListComponent implements OnInit{
   loaded = false;
 
 
-  constructor(private tourService: TourService, private route: ActivatedRoute){
+  constructor(private tourService: TourService, private route: ActivatedRoute, private elementRef: ElementRef){
 
   }
 
@@ -38,5 +40,12 @@ export class TourListComponent implements OnInit{
       this.tours = tours;
       this.loaded = true;
     })
+  }
+
+  scrollToElement(): void {
+    const targetElement = this.elementRef.nativeElement.querySelector('#sec');
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

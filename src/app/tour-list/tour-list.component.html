@@ -1,8 +1,37 @@
-<ul *ngIf="loaded; else loading">
-  <li *ngFor="let t of tours">
-    {{t.name}}  {{t.cost}} {{t.date_of_departure}}
-  </li>
-</ul>
+<div *ngIf="loaded; else loading">
+  <div class="head">
+    <app-header></app-header>
+  </div>
+
+  <div class="upper">
+
+    <img  class="image" src="assets/bigsky6.jpg">
+    <div class="slogan">
+      <a id="join"  (click)="scrollToElement()">Join our Tours</a>
+      <p id="joinu">The best tours in the World!
+        We will make your holiday memorable</p>
+    </div>
+
+  </div>
+  <br  id="sec">
+
+  <div class="tours" >
+    <div class="panel-wrapper">
+      <div class="panel" *ngFor="let t of tours">
+        <div class="individ">
+          <img src="{{t.pic_url}}" class="img-responsive">
+          <div  class="texts">
+            <h1 id="sec" id="name">{{t.name}}</h1>
+            <p id="des">{{t.description}}</p>
+
+            <a class="details"  [routerLink]="[t.id]"> Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <ng-template #loading>
   <p>Loading...</p>

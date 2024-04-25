@@ -5,6 +5,7 @@ import { AviamainComponent } from './aviamain/aviamain.component';
 import { SignupComponent } from './signup/signup.component';
 import {TourListComponent} from "./tour-list/tour-list.component";
 import {TourDetailComponent} from "./tour-detail/tour-detail.component";
+import {MyReservationsComponent} from "./my-reservations/my-reservations.component";
 
 
 export const routes: Routes = [
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'signin', component: SigninComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'tours/:id', component: TourDetailComponent},
+    {path: 'bookings', component: MyReservationsComponent},
 ];
 

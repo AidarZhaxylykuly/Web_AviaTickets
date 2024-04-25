@@ -1,0 +1,5 @@
+<app-header></app-header>
+    <ng-container *ngFor="let r of reservations">
+      <img src="{{r.aviaTourDetails?.pic_url}}">
+      <p>{{r.aviaTourDetails?.city1}}</p>
+    </ng-container>

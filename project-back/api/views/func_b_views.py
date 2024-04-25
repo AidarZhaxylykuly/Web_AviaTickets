@@ -5,6 +5,11 @@ from rest_framework import status
 from api.models import AviaTour, Hotel
 from api.serializers import AviaSerializer, HotelSerializer
 
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+import json
+
 
 #tours' views
 
@@ -81,3 +86,31 @@ def get_hotel(request, pkey=None):
     return Response({
       'error': str(e)
     }, status=400)
+
+#users' views
+
+@csrf_exempt
+def create_user(request):
+  if request.method == 'POST':
+    try:
+      data = json.loads(request.body)
+      username = data.get('username')
+      password = data.get('password')
+      email = data.get('email')
+
+      if not username or not password or not email:
+        return JsonResponse({'error': 'All fields are required'}, status=400)
+
+      user = User.objects.create_user(username=username, password=password, email=email)
+
+      return JsonResponse({'message': 'User created successfully'}, status=201)
+    except Exception as e:
+      return JsonResponse({'error': str(e)}, status=500)
+  else:
+    return JsonResponse({'error': 'Only POST method allowed'}, status=405)
+
+
+def list_users(request):
+  users = User.objects.all()
+  user_data = [{'id': user.id, 'username': user.username} for user in users]
+  return JsonResponse({'users': user_data})
